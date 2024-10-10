@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/data")
+@CrossOrigin(origins = "localhost:3000")
 public class DataController {
 
     @Autowired
@@ -17,7 +18,7 @@ public class DataController {
     @PostMapping
     public String saveData(@RequestBody Data data) {
         dataRepository.save(data);
-        return "Data saved!";
+        return "Data saved!!";
     }
 
     @GetMapping
