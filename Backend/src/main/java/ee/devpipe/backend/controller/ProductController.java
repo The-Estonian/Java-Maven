@@ -1,7 +1,7 @@
 package ee.devpipe.backend.controller;
 
 import org.springframework.http.HttpStatus;
-import ee.devpipe.backend.model.User;
+import ee.devpipe.backend.model.AppUser;
 import ee.devpipe.backend.model.Product;
 import ee.devpipe.backend.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +23,13 @@ public class ProductController {
 
     @PostMapping
     public ResponseEntity<String> saveProduct(@RequestBody Product product) {
-        // Optional<User> user = userRepository.findById(product.getUserId());
-        // if (user.isPresent()) {
-        productRepository.save(product);
-        return ResponseEntity.ok("{\"message\":\"Product saved!\"}");
-        // } else {
-        // return "User not found, product not saved!";
-        // }
+        Optional<User> user = userRepository.findById(product.getUserId());
+        if (user.isPresent()) {
+            productRepository.save(product);
+            return ResponseEntity.ok("{\"message\":\"Product saved!\"}");
+        } else {
+            return "User not found, product not saved!";
+        }
     }
 
     @GetMapping

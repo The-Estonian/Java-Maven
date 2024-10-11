@@ -1,8 +1,9 @@
 package ee.devpipe.backend.repository;
 
-import ee.devpipe.backend.model.User;
+import ee.devpipe.backend.model.AppUser;
 import org.springframework.data.mongodb.repository.MongoRepository;
+import java.util.Optional;
 
-public interface UserRepository extends MongoRepository<User, String> {
-    // Additional query methods can be defined here
+public interface UserRepository extends MongoRepository<AppUser, String> {
+    Optional<AppUser> findByEmail(String email);
 }
