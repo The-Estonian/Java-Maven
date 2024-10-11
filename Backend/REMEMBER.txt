@@ -1,0 +1,3 @@
+mvnw spring-boot:run
+get, post, put, delete
+create, read, update, delete
